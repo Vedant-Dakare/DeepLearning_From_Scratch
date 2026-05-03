@@ -14,9 +14,9 @@ env/
 *.csv
 *.xlsx
 
-# Model files
-*.pkl
-*.h5
+# # Model files
+# *.pkl
+# *.h5
 
 # Logs
 *.log
