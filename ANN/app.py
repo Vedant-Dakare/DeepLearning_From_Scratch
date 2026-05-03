@@ -5,18 +5,20 @@ import pandas as pd
 import pickle
 import os
 
+# Base directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(BASE_DIR, "model.h5")
 
-model = tf.keras.models.load_model(model_path)
+# Load model
+model = tf.keras.models.load_model(os.path.join(BASE_DIR, "model.h5"))
 
-with open('label_encoder_gender.pkl', 'rb') as f:
+# Load encoders
+with open(os.path.join(BASE_DIR, "label_encoder_gender.pkl"), 'rb') as f:
     label_encoder_gender = pickle.load(f)
 
-with open('onehot_encoder_geo.pkl', 'rb') as f:
+with open(os.path.join(BASE_DIR, "onehot_encoder_geo.pkl"), 'rb') as f:
     onehot_encoder_geo = pickle.load(f)
 
-with open('scaler.pkl', 'rb') as f:
+with open(os.path.join(BASE_DIR, "scaler.pkl"), 'rb') as f:
     scaler = pickle.load(f)
 
 st.title("Customer Churn Prediction")
