@@ -3,9 +3,12 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import pickle
+import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "model.h5")
 
-model = tf.keras.models.load_model('model.h5')
+model = tf.keras.models.load_model(model_path)
 
 with open('label_encoder_gender.pkl', 'rb') as f:
     label_encoder_gender = pickle.load(f)
