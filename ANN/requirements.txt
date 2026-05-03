@@ -5,3 +5,4 @@ scikit-learn
 tensorflow
 keras
 tensorboard
+streamlit
