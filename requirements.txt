@@ -7,3 +7,4 @@ keras
 tensorboard
 streamlit
 scikeras
+ipykernel
