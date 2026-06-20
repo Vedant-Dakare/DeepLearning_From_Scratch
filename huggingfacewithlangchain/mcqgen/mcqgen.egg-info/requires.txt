@@ -3,7 +3,3 @@ langchain
 streamlit
 PyPDF2
 python-dotenv
-ipykernel
-langchain-groq
-
--e .

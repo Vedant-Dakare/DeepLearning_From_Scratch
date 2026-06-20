@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: mcqgen
+Version: 0.0.1
+Author: Vedant Dakare
+Author-email: dakarevedant24@gmail.com
+Requires-Dist: openai
+Requires-Dist: langchain
+Requires-Dist: streamlit
+Requires-Dist: PyPDF2
+Requires-Dist: python-dotenv
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
