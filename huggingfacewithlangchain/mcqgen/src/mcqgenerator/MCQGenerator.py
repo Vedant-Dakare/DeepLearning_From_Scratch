@@ -36,8 +36,12 @@ quiz_generation_prompt = PromptTemplate(
     verbose=True
     )
 
+from langchain_core.runnables import RunnablePassthrough
 
-quiz_chain = quiz_generation_prompt | llm
+quiz_chain = (
+    quiz_generation_prompt
+    | llm
+)
 
 template2="""
 You are an expert english grammarian and writer. Given a Multiple Choice Quiz for {subject} students.\
@@ -59,15 +63,19 @@ review_chain = quiz_evaluation_prompt | llm
 from langchain_core.runnables import RunnableLambda
 
 generate_evaluate_chain = (
-    quiz_chain
+    RunnableLambda(
+        lambda x: {
+            "quiz_result": quiz_chain.invoke(x),
+            "subject": x["subject"]
+        }
+    )
     | RunnableLambda(
-        lambda quiz: {
-            "quiz": quiz.content,
+        lambda x: {
+            "quiz": x["quiz_result"].content,
             "review": review_chain.invoke({
-                "quiz": quiz.content,
-                "subject": SUBJECT
+                "quiz": x["quiz_result"].content,
+                "subject": x["subject"]
             }).content
         }
     )
 )
-
